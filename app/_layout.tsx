@@ -30,7 +30,8 @@ export default function RootLayout() {
     <ThemeProvider value={DefaultTheme}>
       <Stack>
         <Stack.Screen name='index' options={{headerShown: false}}></Stack.Screen>
+        <Stack.Screen name='plants/[plant]' options={{title: 'Detalhes', headerBackTitleVisible: false}}></Stack.Screen>
       </Stack>
     </ThemeProvider>
-  );
+  );r
 }
