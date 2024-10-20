@@ -2,7 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // Icons for the cards
 
-const TipCard = () => {
+export interface TipCardProps {
+    dicaText: string;
+    curiosityText: string;
+}
+
+const TipCard = (props: TipCardProps) => {
   return (
     <View style={styles.container}>
       <View style={[styles.card, styles.tipCard]}>
@@ -11,8 +16,7 @@ const TipCard = () => {
           <Text style={styles.tipTitle}>Dica</Text>
         </View>
         <Text style={styles.cardText}>
-          Deixe a planta em um local com bastante luz solar indireta e regue
-          quando o solo estiver completamente seco, evitando encharcar o solo.
+          {props.dicaText}
         </Text>
       </View>
 
@@ -22,9 +26,7 @@ const TipCard = () => {
           <Text style={styles.curiosityTitle}>Curiosidade</Text>
         </View>
         <Text style={styles.cardText}>
-          O gel de Aloe vera é amplamente utilizado em tratamentos para
-          queimaduras e cuidados com a pele, além de ser conhecida por suas
-          propriedades regenerativas.
+          {props.curiosityText}
         </Text>
       </View>
     </View>

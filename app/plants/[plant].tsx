@@ -11,8 +11,14 @@ const IconSvg = () => {
     </Svg>
 }
 
+
+import PlantsJson from '../../assets/plantas.json'
+
 export default function PlantPage() {
-    const param = useGlobalSearchParams()
+    const param = useGlobalSearchParams().plant;
+
+    const {popularName, species, description, tips, curiosities, waterTime, cycle} = PlantsJson[param];
+    const month = new Date().getMonth()
 
     return (
         <ScrollView contentContainerStyle={{backgroundColor: '#eef3ec'}}>
@@ -20,18 +26,18 @@ export default function PlantPage() {
             <Image source={require('../../assets/images/plant.png')} style={{width: 300, height: 300}}></Image>
             </View>
             <View style={styles.titleContainer}>
-                <Text style={{fontWeight: 'bold', fontSize: 41}}>Barbosa</Text>
-                <Text style={{fontSize: 29, fontWeight: "600", color: '#0E2309B2'}}>Babosa - Aloe vera</Text>
-                <View style={{display: 'flex', alignItems: 'center', flexDirection: 'row'}}>
+                <Text style={{fontWeight: 'bold', fontSize: 41}}>{  popularName}</Text>
+                <Text style={{fontSize: 29, fontWeight: "600", color: '#0E2309B2'}}>{popularName} - {species}</Text>
+                <View style={{display: 'flex', alignItems: 'center', flexDirection: 'row', gap: 6}}>
                     <IconSvg />
-                    <Text style={{color: '#C6B205', fontSize: 28}}> Florescendo</Text>
+                    <Text style={{color: '#C6B205', fontSize: 28}}>{cycle[month]}</Text>
                 </View>
                 
             </View>
             <View style={styles.contentContainer}>
-                    <Text style={{fontSize: 18, color: '#0E230980'}}>A babosa é uma planta suculenta conhecida por suas folhas grossas e carnosas, que armazenam gel com propriedades medicinais e hidratantes.</Text>
+                    <Text style={{fontSize: 18, color: '#0E230980'}}>{description}</Text>
                     <WaterReminder />
-                    <TipCard />
+                    <TipCard dicaText={tips} curiosityText={curiosities}/>
                     <TouchableOpacity style={styles.button}>
       <View style={styles.buttonContent}>
         <Icon name="trash-can-outline" size={20} color="#fff" />
@@ -68,6 +74,7 @@ const styles = StyleSheet.create({
         borderRadius: 25, // Rounded corners
         alignItems: 'center',
         justifyContent: 'center',
+        marginBottom: 30,
       },
       buttonContent: {
         flexDirection: 'row', // Icon and text in a row
