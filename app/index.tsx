@@ -18,11 +18,12 @@ const screen = () => {
                 </View>
             </View>
             <ScrollView style={styles.listContainer} contentContainerStyle={styles.contentList}>
-                <Plant />
-                <Plant />
-                <Plant />
-                <Plant />
-                <Plant />
+                <Plant type="0"/>
+                <Plant type="1"/>
+                <Plant type="2"/>
+                <Plant type="3"/>
+                <Plant type="4"/>
+
 
             </ScrollView>
         </SafeAreaView>
